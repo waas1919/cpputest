@@ -84,7 +84,7 @@
  #endif
 #endif
 
-#define new new(__FILE__, __LINE__)
+//#define new new(__FILE__, __LINE__)
 
 #ifdef __clang__
  #pragma clang diagnostic pop

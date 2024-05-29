@@ -4,7 +4,7 @@
 .*~
 *.d
 *.o
-*.a
+#*.a
 .settings
 *doxygen*
 *.gcov
@@ -57,7 +57,7 @@ cpputest_build/tests
 /.deps
 CppUTestExtTests
 CppUTestTests
-/Makefile
+#/Makefile
 config.h
 config.h.in
 config.status
@@ -66,7 +66,7 @@ filename.map.txt
 libtool
 stamp-h1
 INSTALL
-Makefile.in
+#Makefile.in
 aclocal.m4
 compile
 config.guess
