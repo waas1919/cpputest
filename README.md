@@ -1,41 +1,5 @@
 # CppUTest
 
-# [Joao] My adaptation is to cross-compile to ARM and avoid overriding new operator
-
-[Joao] The files ADDED by me:
-
-- Makefile (ADDED)
-
-[Joao] The files changed by me:
-
-- pkgs-mbed/CppUTest/MemoryLeakDetectorNewMacros.h
-
-```
-#ifdef __clang__
-#pragma clang diagnostic push
-#if (__clang_major__ == 3 && __clang_minor__ >= 6) || __clang_major__ >= 4
-#pragma clang diagnostic ignored "-Wkeyword-macro"
-#endif
-#endif
-
-//#define new new(__FILE__, __LINE__) // REMOVED THIS!!!!!
-
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-
-#define CPPUTEST_USE_NEW_MACROS 1
-
-#endif
-```
-
-How to compile:
-
-`make`
-
-# [Joao] -----------------------
-
-
 [![GitHub Actions](https://github.com/cpputest/cpputest/actions/workflows/basic.yml/badge.svg)](https://github.com/cpputest/cpputest/actions/workflows/basic.yml)
 [![AppveyorBuild status](https://ci.appveyor.com/api/projects/status/irh38i4wblsb5tew?svg=true)](https://ci.appveyor.com/project/basvodde/cpputest)
 [![Coverage Status](https://coveralls.io/repos/cpputest/cpputest/badge.svg?branch=master&service=github)](https://coveralls.io/github/cpputest/cpputest?branch=master)
@@ -300,3 +264,32 @@ target_link_libraries(example_test PRIVATE
 ```
 
 [conan-center]: https://conan.io/center/cpputest
+
+# Cross-compile to ARM
+
+- Added the `Makefile` used for ARM cross compilation
+
+# Avoid `new` operator error
+
+- Changed the file `MemoryLeakDetectorNewMacros.h` to:
+
+```
+#ifdef __clang__
+#pragma clang diagnostic push
+#if (__clang_major__ == 3 && __clang_minor__ >= 6) || __clang_major__ >= 4
+#pragma clang diagnostic ignored "-Wkeyword-macro"
+#endif
+#endif
+
+//#define new new(__FILE__, __LINE__) // REMOVED THIS!!!!!
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+
+#define CPPUTEST_USE_NEW_MACROS 1
+
+#endif
+```
+
+Compile with: `make`
