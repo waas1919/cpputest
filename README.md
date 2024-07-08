@@ -294,4 +294,12 @@ target_link_libraries(example_test PRIVATE
 
 Compile with: `make`
 
-After compile copy the `libCppUTest.a` and ONLY the `include/CppUTest` and the `include/CppUTestExt`. DO NOT COPY THE `Platforms/c2000`.
+Then if you want to compile the `libCppUTestExt.a` which contains the mocks, you just need to edit the file `Makefile` and replace the line:
+
+`COMPONENT_NAME := CppUTest`
+
+By:
+
+`COMPONENT_NAME := CppUTestExt`
+
+After compile copy the `libCppUTest.a` and `libCppUTest.a`and ONLY the includes from `include/CppUTest` and the `include/CppUTestExt`. DO NOT COPY THE `Platforms/c2000`.
